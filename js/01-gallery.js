@@ -28,12 +28,12 @@ galleryContainer.addEventListener('click', (event) => {
     </div>`, {
       
     onShow: (instance) => {
-      instance.element().querySelector('img').onclick = instance.close
+      instance.element().querySelector('img').onclick = () => instance.close();
     }
   });
     
   instance.show();
-})
+});
 
 
 

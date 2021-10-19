@@ -33,9 +33,18 @@ galleryContainer.addEventListener('click', (event) => {
   });
     
   instance.show();
+
+  document.addEventListener('keydown', closeOnEscape);
 });
 
+function closeOnEscape(event) {
+    if (event.key === 'Escape') {
+      instance.close();
 
+      document.removeEventListener('keydown', closeOnEscape);
+    }  
+}
+ 
 
 
 

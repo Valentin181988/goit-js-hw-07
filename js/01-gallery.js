@@ -21,12 +21,17 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryItemsCollection);
 galleryContainer.addEventListener('click', (event) => {
   event.preventDefault();
 
-  const instance = basicLightbox.create(`
-    <div class="modal">
-        <img src="${event.target.dataset.source}"/>
-    </div>
-`);
+  const instance = basicLightbox.create(
 
+    `<div class="modal">
+        <img src="${event.target.dataset.source}"/>
+    </div>`, {
+      
+    onShow: (instance) => {
+      instance.element().querySelector('img').onclick = instance.close
+    }
+  });
+    
   instance.show();
 })
 

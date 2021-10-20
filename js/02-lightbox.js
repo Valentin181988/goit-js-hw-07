@@ -10,3 +10,5 @@ const galleryItemsCollection = galleryItems.map(({preview, original, description
 ).join('');
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryItemsCollection);
+
+const lightbox = new SimpleLightbox('.gallery__item', {captionDelay: 250, captionsData: 'alt', heightRatio: 0.9});

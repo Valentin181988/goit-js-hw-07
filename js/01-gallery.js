@@ -18,7 +18,7 @@ const galleryItemsCollection = galleryItems.map(({preview, original, description
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryItemsCollection);
 
-galleryContainer.addEventListener('click', (event) => {
+/* galleryContainer.addEventListener('click', (event) => {
   event.preventDefault();
 
   const instance = basicLightbox.create(
@@ -43,6 +43,33 @@ function closeOnEscape(event) {
 
       document.removeEventListener('keydown', closeOnEscape);
     }  
+} */
+
+
+galleryContainer.addEventListener('click', imgShow);
+
+const instance = basicLightbox.create(`<img src=""/>`,{
+
+  onShow: () => {
+    window.addEventListener('keydown', keydownEscape);
+  },
+  onClose: () => {
+    window.removeEventListener('keydown', keydownEscape);
+  },
+});
+
+function keydownEscape(event) {
+  console.log(event);
+  if (event.key === 'Escape') {
+    instance.close();
+    return;
+  }
+}
+
+function imgShow(event) {
+  event.preventDefault();
+  instance.element().querySelector('img').src = event.target.dataset.source;
+  instance.show();
 }
  
 

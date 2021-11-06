@@ -68,6 +68,11 @@ function keydownEscape(event) {
 
 function imgShow(event) {
   event.preventDefault();
+  
+  if (!event.target.classList.contains('gallery__image')) {
+    return;
+  }
+
   instance.element().querySelector('img').src = event.target.dataset.source;
   instance.show();
 }
